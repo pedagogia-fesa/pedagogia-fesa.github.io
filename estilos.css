@@ -1,0 +1,26 @@
+html, body {
+  height: 100%;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  margin: 0;
+  font-family: sans-serif;
+}
+
+section {
+  height: var(--altura-real);
+  scroll-snap-align: start;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: black;
+}
+
+.pantalla-inicial {
+  background: #BFD7EA;
+}
+
+.tema {
+  background: #BFD7EA;
+}
