@@ -24,3 +24,51 @@ section {
 .tema {
   background: #BFD7EA;
 }
+
+/* Botón lunita */
+#modoOscuroBtn {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  transition: color 0.3s ease;
+  z-index: 1000;
+}
+
+#modoOscuroBtn:hover {
+  color: #555;
+}
+
+/* Estilos para modo oscuro */
+body.modo-oscuro {
+  background-color: #121212;
+  color: #eee;
+}
+
+body.modo-oscuro section.pantalla-inicial {
+  background-color: #1e1e2f;
+}
+
+body.modo-oscuro section.tema {
+  background-color: #1e1e2f;
+}
+
+/* Opcional: cambiar color del botón en modo oscuro */
+body.modo-oscuro #modoOscuroBtn {
+  color: #f0e68c;
+}
+
+body.modo-oscuro {
+  background-color: #121212;
+  color: #f0e68c;  /* Cambia aquí el color de texto al amarillo pastel */
+}
+
+body.modo-oscuro section {
+  color: #f0e68c;
+}
+
+
