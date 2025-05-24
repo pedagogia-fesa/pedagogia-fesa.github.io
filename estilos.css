@@ -97,6 +97,40 @@ body.modo-oscuro .cognitivismo-contenido {
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
 }
 
+body.modo-oscuro .tema.conductismo {
+  background: var(--color-fondo-oscuro);
+  color: var(--color-texto-oscuro);
+}
+
+body.modo-oscuro .conductismo-contenido {
+  background: var(--color-fondo-objetivo-oscuro); /* el mismo fondo usado para cognitivismo */
+  color: var(--color-texto-oscuro);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+body.modo-oscuro .cognitivismo-contenido::-webkit-scrollbar,
+body.modo-oscuro .conductismo-contenido::-webkit-scrollbar {
+  width: 10px;
+}
+
+body.modo-oscuro .cognitivismo-contenido::-webkit-scrollbar-track,
+body.modo-oscuro .conductismo-contenido::-webkit-scrollbar-track {
+  background: #2c2c3e; /* mismo fondo que el contenedor */
+  border-radius: 10px;
+}
+
+body.modo-oscuro .cognitivismo-contenido::-webkit-scrollbar-thumb,
+body.modo-oscuro .conductismo-contenido::-webkit-scrollbar-thumb {
+  background-color: #888; /* gris medio para contraste */
+  border-radius: 10px;
+  border: 2px solid #2c2c3e; /* hace que no se vea pegado */
+}
+
+body.modo-oscuro .cognitivismo-contenido::-webkit-scrollbar-thumb:hover,
+body.modo-oscuro .conductismo-contenido::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+
 
 /* Root */
 :root {
@@ -115,6 +149,17 @@ section {
   --color-texto-oscuro: #f0e68c;     /* amarillo pastel que usas en modo oscuro */
   --color-fondo-objetivo-oscuro: #2a2a41; /* recuadro oscuro translúcido */
 }
+
+:root {
+  --altura-tema: 700px;
+}
+
+.cognitivismo-contenido, .conductismo-contenido {
+  height: var(--altura-tema);
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
 
 /* Animación de aparición suave */
 @keyframes fadeUp {
@@ -213,42 +258,65 @@ section {
   line-height: 1.6;
   color: inherit;
 }
-  /* Cognitivismo */
+  /* TEMAS */
 
-.cognitivismo {
-  background: #BFD7EA; /* azul pastel */
-  color: black;
-}
-
-.cognitivismo-contenido {
-  background: white;
-  color: black;
+.cognitivismo-contenido, .conductismo-contenido {
+  height: var(--altura-tema);
+  overflow-y: auto;
+  scroll-behavior: smooth;
   max-width: 800px;
   margin: auto;
   padding: 2rem;
   border-radius: 1rem;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
   animation: fadeIn 1s ease;
+  background: white;
+  color: black;
 }
 
-.cognitivismo-contenido h2 {
+.cognitivismo-contenido h2, .conductismo-contenido h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.cognitivismo-contenido h3 {
+.cognitivismo-contenido h3, .conductismo-contenido h3 {
   margin-top: 1.5rem;
   font-size: 1.3rem;
 }
 
-.cognitivismo-contenido p, .cognitivismo-contenido li {
+.cognitivismo-contenido p, .conductismo-contenido p,
+.cognitivismo-contenido li, .conductismo-contenido li {
   font-size: 1.1rem;
   line-height: 1.7;
 }
 
-.cognitivismo-contenido ul {
+.cognitivismo-contenido ul, .conductismo-contenido ul {
   padding-left: 1.5rem;
   list-style-type: disc;
+}
+
+.cognitivismo, .conductismo {
+  background: #BFD7EA;
+}
+
+.cognitivismo-contenido img, .conductismo-contenido img {
+  max-width: 70%;      /* Que no se salga del contenedor */
+  height: auto;         /* Mantiene proporción */
+  margin-top: 1.5rem;   /* Espacio arriba para separar del texto */
+  border-radius: 0.5rem; /* Bordes ligeramente redondeados */
+  display: block;       /* Para que respete el margen y se alinee bien */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra ligera para destacar */
+  margin: 1.5rem auto 0;
+}
+
+@media (max-width: 480px) {
+  .cognitivismo-contenido img, .conductismo-contenido img {
+    width: 90%;
+    margin-top: 1rem;
+    border-radius: 0.3rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    margin: 1rem auto 0;  /* margen superior más pequeño y centrado */
+  }
 }
 
 /* Animación */
@@ -262,26 +330,6 @@ section {
     transform: translateY(0);
   }
 }
-
-/* Scrollbar cute */
-.tema::-webkit-scrollbar {
-  width: 8px;
-}
-
-.tema::-webkit-scrollbar-track {
-  background: #e0e0e0;
-  border-radius: 10px;
-}
-
-.tema::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 10px;
-}
-
-.tema::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
-
 
 @media (max-width: 480px) {
   .objetivo-contenido h2 {
