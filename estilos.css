@@ -110,7 +110,7 @@ body.modo-oscuro .tema.cognitivismo {
 }
 
 body.modo-oscuro .cognitivismo-contenido {
-  background: var(--color-fondo-objetivo-oscuro); /* reutilizas este */
+  background: var(--color-fondo-objetivo-oscuro); 
   color: var(--color-texto-oscuro);
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
 }
@@ -121,11 +121,32 @@ body.modo-oscuro .tema.conductismo {
 }
 
 body.modo-oscuro .conductismo-contenido {
-  background: var(--color-fondo-objetivo-oscuro); /* el mismo fondo usado para cognitivismo */
+  background: var(--color-fondo-objetivo-oscuro); 
   color: var(--color-texto-oscuro);
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
 }
 
+body.modo-oscuro .tema.constructivismo {
+  background: var(--color-fondo-oscuro);
+  color: var(--color-texto-oscuro);
+}
+
+body.modo-oscuro .constructivismo-contenido {
+  background: var(--color-fondo-objetivo-oscuro);
+  color: var(--color-texto-oscuro);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+body.modo-oscuro .tema.estructuralismo {
+  background: var(--color-fondo-oscuro);
+  color: var(--color-texto-oscuro);
+}
+
+body.modo-oscuro .estructuralismo-contenido {
+  background: var(--color-fondo-objetivo-oscuro);
+  color: var(--color-texto-oscuro);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
 /* Root */
 :root {
   --altura-viewport: 100vh;
@@ -254,7 +275,7 @@ section {
 }
   /* TEMAS */
 
-.cognitivismo-contenido, .conductismo-contenido {
+.cognitivismo-contenido, .conductismo-contenido, .constructivismo-contenido, .estructuralismo-contenido{
   height: var(--altura-tema);
   overflow-y: auto;
   scroll-behavior: smooth;
@@ -268,32 +289,50 @@ section {
   color: black;
 }
 
-.cognitivismo-contenido h2, .conductismo-contenido h2 {
+.cognitivismo-contenido h2, 
+.conductismo-contenido h2,
+.constructivismo-contenido h2,
+.estructuralismo-contenido h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.cognitivismo-contenido h3, .conductismo-contenido h3 {
+.cognitivismo-contenido h3, 
+.conductismo-contenido h3,
+.constructivismo-contenido h3,
+.estructuralismo-contenido h3 {
   margin-top: 1.5rem;
   font-size: 1.3rem;
 }
 
-.cognitivismo-contenido p, .conductismo-contenido p,
-.cognitivismo-contenido li, .conductismo-contenido li {
+.cognitivismo-contenido p, 
+.conductismo-contenido p,
+.constructivismo-contenido p,
+.estructuralismo-contenido p,
+.cognitivismo-contenido li, 
+.conductismo-contenido li,
+.constructivismo-contenido li,
+.estructuralismo-contenido li {
   font-size: 1.1rem;
   line-height: 1.7;
 }
 
-.cognitivismo-contenido ul, .conductismo-contenido ul {
+.cognitivismo-contenido ul, 
+.conductismo-contenido ul,
+.constructivismo-contenido ul,
+.estructuralismo-contenido ul {
   padding-left: 1.5rem;
   list-style-type: disc;
 }
 
-.cognitivismo, .conductismo {
+.cognitivismo, 
+.conductismo, 
+.constructivismo,
+.estructuralismo {
   background: #BFD7EA;
 }
 
-.cognitivismo-contenido img, .conductismo-contenido img {
+.cognitivismo-contenido img, .conductismo-contenido img, .constructivismo-contenido img, .estructuralismo-contenido img {
   max-width: 70%;      /* Que no se salga del contenedor */
   height: auto;         /* Mantiene proporción */
   margin-top: 1.5rem;   /* Espacio arriba para separar del texto */
@@ -304,7 +343,7 @@ section {
 }
 
 @media (max-width: 480px) {
-  .cognitivismo-contenido img, .conductismo-contenido img {
+  .cognitivismo-contenido img, .conductismo-contenido img, .constructivismo-contenido img, .estructuralismo-contenido img {
     width: 90%;
     margin-top: 1rem;
     border-radius: 0.3rem;
