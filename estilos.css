@@ -71,4 +71,114 @@ body.modo-oscuro section {
   color: #f0e68c;
 }
 
+:root {
+  --altura-viewport: 100vh;
+}
+section {
+  height: var(--altura-viewport);
+}
+
+/* Animación de aparición suave */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clase para aplicar al texto al cargar */
+.aparecer {
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.pantalla-inicial {
+  min-height: var(--altura-viewport);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem 10%;
+  background: #BFD7EA;  /* Fondo azul pastel */
+  color: #333;           /* Texto oscuro suave */
+}
+
+
+
+/* Contenedor centrado */
+.bienvenida-contenido {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Texto */
+.bienvenida-contenido h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  margin-bottom: 1rem;
+}
+
+.bienvenida-contenido p {
+  color: inherit; /* hereda el #333 de pantalla-inicial */
+  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  line-height: 1.6;
+  font-weight: 400;
+  opacity: 0.95;
+}
+
+/* Animación aesthetic */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.aparecer {
+  opacity: 0;
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.delay {
+  animation-delay: 0.5s;
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+  .bienvenida-contenido {
+    padding: 0 1.5rem;
+  }
+
+  .bienvenida-contenido h1 {
+    font-size: 2rem;
+  }
+
+  .bienvenida-contenido p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 480px) {
+  .bienvenida-contenido h1 {
+    font-size: 1.6rem;
+  }
+
+  .bienvenida-contenido p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+}
+
+}
+
+
 
