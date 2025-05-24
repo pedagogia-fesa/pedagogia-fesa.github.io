@@ -22,7 +22,11 @@ section {
 }
 
 .tema {
-  background: #BFD7EA;
+  height: 100vh; /* Cada scroll pane ocupa toda la pantalla */
+  scroll-snap-align: start;
+  overflow-y: auto; /* Scroll interno si hay mucho contenido */
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
 /* Botón lunita */
@@ -81,6 +85,18 @@ body.modo-oscuro .objetivo-contenido {
   color: var(--color-texto-oscuro);
   box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
 }
+
+body.modo-oscuro .tema.cognitivismo {
+  background: var(--color-fondo-oscuro);
+  color: var(--color-texto-oscuro);
+}
+
+body.modo-oscuro .cognitivismo-contenido {
+  background: var(--color-fondo-objetivo-oscuro); /* reutilizas este */
+  color: var(--color-texto-oscuro);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
 
 /* Root */
 :root {
@@ -196,6 +212,75 @@ section {
   font-size: 1.2rem;
   line-height: 1.6;
   color: inherit;
+}
+  /* Cognitivismo */
+
+.cognitivismo {
+  background: #BFD7EA; /* azul pastel */
+  color: black;
+}
+
+.cognitivismo-contenido {
+  background: white;
+  color: black;
+  max-width: 800px;
+  margin: auto;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease;
+}
+
+.cognitivismo-contenido h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.cognitivismo-contenido h3 {
+  margin-top: 1.5rem;
+  font-size: 1.3rem;
+}
+
+.cognitivismo-contenido p, .cognitivismo-contenido li {
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.cognitivismo-contenido ul {
+  padding-left: 1.5rem;
+  list-style-type: disc;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar cute */
+.tema::-webkit-scrollbar {
+  width: 8px;
+}
+
+.tema::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.tema::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.tema::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 
 
 @media (max-width: 480px) {
@@ -221,7 +306,6 @@ section {
   /* Puedes borrar esto también si ya usas clamp() */
 }
 
-}
 
 
 
