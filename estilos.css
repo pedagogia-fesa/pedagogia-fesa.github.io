@@ -103,10 +103,8 @@ section {
   text-align: center;
   padding: 2rem 10%;
   background: #BFD7EA;  /* Fondo azul pastel */
-  color: #333;           /* Texto oscuro suave */
+  color: black;           /* Texto oscuro suave */
 }
-
-
 
 /* Contenedor centrado */
 .bienvenida-contenido {
@@ -119,13 +117,13 @@ section {
 
 /* Texto */
 .bienvenida-contenido h1 {
-  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-size: clamp(2rem, 6vw, 3rem);
   margin-bottom: 1rem;
 }
 
 .bienvenida-contenido p {
   color: inherit; /* hereda el #333 de pantalla-inicial */
-  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  font-size: clamp(1.1rem, 4.5vw, 1.5rem);
   line-height: 1.6;
   font-weight: 400;
   opacity: 0.95;
@@ -152,30 +150,46 @@ section {
   animation-delay: 0.5s;
 }
 
+.objetivo-contenido {
+  max-width: 800px;
+  padding: 2rem;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8); /* fondo blanco translúcido */
+  border-radius: 1.5rem;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.objetivo-contenido h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.objetivo-contenido p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #444;
+
+@media (max-width: 480px) {
+  .objetivo-contenido h2 {
+    font-size: 2rem;
+  }
+
+  .objetivo-contenido p {
+    font-size: 1rem;
+  }
+}
+
 /* Media query para pantallas pequeñas */
 @media (max-width: 768px) {
   .bienvenida-contenido {
     padding: 0 1.5rem;
   }
 
-  .bienvenida-contenido h1 {
-    font-size: 2rem;
-  }
+  /* Puedes borrar h1 y p si ya usas clamp() */
+}
 
-  .bienvenida-contenido p {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  @media (max-width: 480px) {
-  .bienvenida-contenido h1 {
-    font-size: 1.6rem;
-  }
-
-  .bienvenida-contenido p {
-    font-size: 0.95rem;
-    line-height: 1.5;
-  }
+@media (max-width: 480px) {
+  /* Puedes borrar esto también si ya usas clamp() */
 }
 
 }
