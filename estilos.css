@@ -81,16 +81,16 @@ body.modo-oscuro section.tema {
 
 /* Opcional: cambiar color del botón en modo oscuro */
 body.modo-oscuro #modoOscuroBtn {
-  color: #f0e68c;
+  color: white;
 }
 
 body.modo-oscuro {
   background-color: #1e1e2f;
-  color: #f0e68c;  /* Cambia aquí el color de texto al amarillo pastel */
+  color: white;  /* Cambia aquí el color de texto al amarillo pastel */
 }
 
 body.modo-oscuro section {
-  color: #f0e68c;
+  color: white;
 }
 
 body.modo-oscuro .tema.objetivo {
@@ -206,7 +206,7 @@ section {
   --color-fondo-objetivo-claro: rgba(255, 255, 255, 0.8); /* recuadro blanco translúcido */
 
   --color-fondo-oscuro: #1e1e2f;      /* fondo oscuro general */
-  --color-texto-oscuro: #f0e68c;     /* amarillo pastel que usas en modo oscuro */
+  --color-texto-oscuro: white;     /* amarillo pastel que usas en modo oscuro */
   --color-fondo-objetivo-oscuro: #2a2a41; /* recuadro oscuro translúcido */
 }
 
