@@ -20,10 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const autores = document.querySelectorAll('.autor');
   const teorias1 = document.querySelectorAll('.matching-container .teoria');
   const respuestasAutorTeoria = {
-    'Piaget': 'Gestalt',
-    'Skinner': 'Humanismo',
-    'Maslow': 'Conductismo',
-    'Köhler': 'Constructivismo'
+    'Piaget': 'Constructivismo',
+    'Skinner': 'Conductismo',
+    'Maslow': 'Humanismo',
+    'Köhler': 'Gestalt'
   };
   let autorSeleccionado = null;
   let emparejamientos1 = {};
@@ -75,10 +75,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const teorias2 = document.querySelectorAll('.relacion-teoria-palabra .teoria');
   const palabras = document.querySelectorAll('.relacion-teoria-palabra .palabra');
   const respuestasTeoriaPalabra = {
-    'Cognitivismo': 'Autonomía',
-    'Conductismo': 'Percepción',
-    'Gestalt': 'Reforzamiento',
-    'Humanismo': 'Procesos mentales'
+    'Cognitivismo': 'Procesos mentales',
+    'Conductismo': 'Reforzamiento',
+    'Gestalt': 'Percepción',
+    'Humanismo': 'Autonomía'
   };
   let teoriaSeleccionada = null;
   let emparejamientos2 = {};
@@ -155,7 +155,7 @@ evaluarBtn.addEventListener('click', () => {
 
   // Mostrar resultado y mensaje
   resultadoEl.innerHTML = `
-    <strong>Obtuviste ${totalAciertos} de ${totalPosible} aciertos.</strong><br>
+    <strong>Obtuviste ${totalAciertos} de 16 aciertos.</strong><br>
     ${mensaje}
   `;
   document.getElementById('reintentar-btn').style.display = 'block';
