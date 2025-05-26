@@ -551,13 +551,179 @@ section {
   background-color: #f8d4d4;
 }
 
+/* Contenedor de resultado */
+.resultado-container {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+}
 
-/* Adaptable a móvil */
-@media (max-width: 600px) {
-  .matching-container {
-    flex-direction: column;
+/* Botón “Evaluar” */
+#evaluar-btn {
+  background-color: #38bcec;       /* Azul pastel */
+  color: #ffffff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#evaluar-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* Recuadro de resultado */
+#resultado {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #E0F7FA;       /* Azul muy suave */
+  border: 1px solid #B2EBF2;
+  border-radius: 1.25rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0277BD;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+
+.matching-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+
+}
+
+.matching-container .autores,
+.matching-container .teorias,
+.matching-container .palabra {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Que se vea de dos columnas en pantallas grandes */
+@media (min-width: 768px) {
+  .matching-container .autores,
+  .matching-container .teorias {
+    width: 45%;
   }
 }
+
+/* Que se vea una sola columna en pantallas chicas */
+@media (max-width: 767px) {
+  .matching-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .matching-container .autores,
+  .matching-container .teorias {
+    width: 100%;
+  }
+}
+
+/* Contenedor principal */
+.matching-container.relacion-teoria-palabra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  margin: 2rem 0;
+}
+
+/* Contenedores individuales */
+.matching-container.relacion-teoria-palabra .autores,
+.matching-container.relacion-teoria-palabra .teorias {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Escritorio: dos columnas */
+@media (min-width: 768px) {
+  .matching-container.relacion-teoria-palabra {
+    flex-direction: row;
+  }
+
+  .matching-container.relacion-teoria-palabra .autores,
+  .matching-container.relacion-teoria-palabra .teorias {
+    width: 48%;
+  }
+}
+
+/* Móvil: columnas una debajo de la otra */
+@media (max-width: 767px) {
+  .matching-container.relacion-teoria-palabra {
+    flex-direction: column;
+  }
+
+  .matching-container.relacion-teoria-palabra .autores,
+  .matching-container.relacion-teoria-palabra .teorias {
+    width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .matching-container.relacion-teoria-palabra .autores,
+  .matching-container.relacion-teoria-palabra .teorias {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    background-color: #f9f9f9;
+  }
+
+  /* Espacio entre bloques */
+  .matching-container.relacion-teoria-palabra .autores {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Relación autor-teoría */
+  .matching-container.relacion-autor-teoria .autores,
+  .matching-container.relacion-autor-teoria .teorias,
+
+  /* Relación teoría-palabra */
+  .matching-container.relacion-teoria-palabra .autores,
+  .matching-container.relacion-teoria-palabra .teorias {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 1rem;
+    background-color: #f9f9f9;
+  }
+
+  /* Espacio entre bloques */
+  .matching-container.relacion-autor-teoria .autores,
+  .matching-container.relacion-teoria-palabra .autores {
+    margin-bottom: 1rem;
+  }
+}
+
+#reintentar-btn {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #38bcec;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#reintentar-btn:hover {
+  background-color: #38bcec;
+}
+
 
 
 @media (max-width: 480px) {

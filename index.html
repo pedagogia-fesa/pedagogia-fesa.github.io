@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="estilos.css">
   <title>Pedagogia</title>
 </head>
@@ -284,22 +285,22 @@
   </li>
 
   <li>
-  Relaciona al autor con la teoría que representa:
-  <div class="matching-container">
-    <div class="autores">
-      <button class="autor" data-autor="Piaget">Piaget</button>
-      <button class="autor" data-autor="Köhler">Köhler</button>
-      <button class="autor" data-autor="Maslow">Maslow</button>
-      <button class="autor" data-autor="Skinner">Skinner</button>
-    </div>
-    <div class="teorias">
-      <button class="teoria" data-teoria="Humanismo">Humanismo</button>
-      <button class="teoria" data-teoria="Conductismo">Conductismo</button>
-      <button class="teoria" data-teoria="Constructivismo">Constructivismo</button>
-      <button class="teoria" data-teoria="Gestalt">Gestalt</button>
-    </div>
+    Relaciona al autor con la teoría que representa:
+<div class="matching-container relacion-autor-teoria">
+  <div class="autores">
+    <button class="autor" data-autor="Piaget">Piaget</button>
+    <button class="autor" data-autor="Köhler">Köhler</button>
+    <button class="autor" data-autor="Maslow">Maslow</button>
+    <button class="autor" data-autor="Skinner">Skinner</button>
   </div>
-</li>
+  <div class="teorias">
+    <button class="teoria" data-teoria="Humanismo">Humanismo</button>
+    <button class="teoria" data-teoria="Conductismo">Conductismo</button>
+    <button class="teoria" data-teoria="Constructivismo">Constructivismo</button>
+    <button class="teoria" data-teoria="Gestalt">Gestalt</button>
+  </div>
+</div>
+
 
 
   <li>
@@ -380,9 +381,12 @@
     <button class="opcion" data-correct="false">D) Ambas surgieron en el siglo XIX</button>
   </div>
 </li>
-
-    </ol>
+  </ol>
+  <div class="resultado-container">
+    <button id="evaluar-btn">Evaluar</button>
+    <p id="resultado"></p>
   </div>
+<button id="reintentar-btn" style="display: none;">Inicio</button>
 </section>
 
 <script src="main.js"></script>
