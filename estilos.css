@@ -508,92 +508,10 @@ section {
   font-weight: 600;
 }
 
-.opcion {
-  display: block;
-  margin: 0.5rem 0;
-  padding: 0.75rem 1rem;
-  border: 2px solid transparent;
-  border-radius: 8px;
-  background-color: #f4f4f4;
-  cursor: pointer;
-  transition: 0.3s;
-  font-size: 1rem;
-}
-
-.opcion.correcta {
-  background-color: #d4edda;
-  color: #155724;
-  border-color: #28a745;
-}
-
-.opcion.incorrecta {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-color: #dc3545;
-}
-
 .matching-container {
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
-}
-
-.autores, .teorias {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.autor, .teoria {
-  padding: 0.6rem 1rem;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  background: #f0f0f0;
-  font-size: 1rem;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.autor.seleccionado, .teoria.seleccionado {
-  border-color: #4a90e2;
-  background-color: #d0e6ff;
-}
-
-.autor.correcto, .teoria.correcto {
-  border-color: #2ecc71;
-  background-color: #d4f8d4;
-}
-
-.autor.incorrecto, .teoria.incorrecto {
-  border-color: #e74c3c;
-  background-color: #f8d4d4;
-}
-
-.palabra {
-  padding: 0.6rem 1rem;
-  border: 2px solid #ccc;
-  border-radius: 6px;
-  background: #f0f0f0;
-  font-size: 1rem;
-  cursor: pointer;
-  user-select: none;
-  transition: background-color 0.3s, border-color 0.3s;
-}
-
-.palabra.seleccionado {
-  border-color: #4a90e2;
-  background-color: #d0e6ff;
-}
-
-.palabra.correcto {
-  border-color: #2ecc71;
-  background-color: #d4f8d4;
-}
-
-.palabra.incorrecto {
-  border-color: #e74c3c;
-  background-color: #f8d4d4;
 }
 
 /* Contenedor de resultado */
@@ -636,123 +554,133 @@ section {
   display: none;
 }
 
+.matching-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+/* --- CSS COMPLETO --- */
+
+/* --- OPCIÓN MÚLTIPLE --- */
+.opcion {
+  display: block;
+  margin: 0.5rem 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  background-color: #f4f4f4;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  font-size: 1rem;
+}
+
+.opcion.correcta {
+  background-color: #d4edda;
+  color: #155724;
+  border-color: #28a745;
+}
+
+.opcion.incorrecta {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-color: #dc3545;
+}
+
+/* --- EMPAREJAMIENTOS (AUTOR → TEORÍA & TEORÍA → PALABRA) --- */
+/* Estados seleccionados */
+.autor.seleccionado,
+.teoria-autor.seleccionado,
+.teoria-palabra.seleccionado {
+  border-color: #4a90e2;
+  background-color: #d0e6ff;
+}
+
+/* Correcto */
+.autor.correcto,
+.teoria-autor.correcto,
+.teoria-palabra.correcto,
+.palabra.correcto {
+  border-color: #2ecc71;
+  background-color: #d4f8d4;
+}
+
+/* Incorrecto */
+.autor.incorrecto,
+.teoria-autor.incorrecto,
+.teoria-palabra.incorrecto,
+.palabra.incorrecto {
+  border-color: #e74c3c;
+  background-color: #f8d4d4;
+}
+
+/* Base uniforme para TODOS los botones de emparejamiento */
+.autor,
+.teoria-autor,
+.teoria-palabra,
+.palabra {
+  display: inline-block;       /* se encogen al contenido */
+  margin: 0.3rem;               /* espacio uniforme alrededor */
+  padding: 0.5rem 1rem;         /* relleno horizontal y vertical idéntico */
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+  box-sizing: border-box;       /* que el padding no aumente el ancho */
+}
+
+button.teoria, button.palabra {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
 
 .matching-container {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap;
-  margin: 2rem 0;
-
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
+/* Estilo para los grupos de botones */
 .matching-container .autores,
-.matching-container .teorias,
-.matching-container .palabra {
+.matching-container .teorias {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
 }
 
-/* Que se vea de dos columnas en pantallas grandes */
-@media (min-width: 768px) {
-  .matching-container .autores,
-  .matching-container .teorias {
-    width: 45%;
-  }
+/* Estilo unificado para todos los botones */
+.matching-container button {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  border: none;
+  background-color: #f2f2f2;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Que se vea una sola columna en pantallas chicas */
-@media (max-width: 767px) {
-  .matching-container {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .matching-container .autores,
-  .matching-container .teorias {
-    width: 100%;
-  }
-}
-
-/* Contenedor principal */
-.matching-container.relacion-teoria-palabra {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
-  margin: 2rem 0;
-}
-
-/* Contenedores individuales */
-.matching-container.relacion-teoria-palabra .autores,
-.matching-container.relacion-teoria-palabra .teorias {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Escritorio: dos columnas */
-@media (min-width: 768px) {
-  .matching-container.relacion-teoria-palabra {
-    flex-direction: row;
-  }
-
-  .matching-container.relacion-teoria-palabra .autores,
-  .matching-container.relacion-teoria-palabra .teorias {
-    width: 48%;
-  }
-}
-
-/* Móvil: columnas una debajo de la otra */
-@media (max-width: 767px) {
-  .matching-container.relacion-teoria-palabra {
-    flex-direction: column;
-  }
-
-  .matching-container.relacion-teoria-palabra .autores,
-  .matching-container.relacion-teoria-palabra .teorias {
-    width: 100%;
-  }
-}
-
-@media (max-width: 767px) {
-  .matching-container.relacion-teoria-palabra .autores,
-  .matching-container.relacion-teoria-palabra .teorias {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 1rem;
-    background-color: #f9f9f9;
-  }
-
-  /* Espacio entre bloques */
-  .matching-container.relacion-teoria-palabra .autores {
-    margin-bottom: 1rem;
-  }
-}
-
-@media (max-width: 767px) {
-  /* Relación autor-teoría */
-  .matching-container.relacion-autor-teoria .autores,
-  .matching-container.relacion-autor-teoria .teorias,
-
-  /* Relación teoría-palabra */
-  .matching-container.relacion-teoria-palabra .autores,
-  .matching-container.relacion-teoria-palabra .teorias {
-    width: 100%;
-    padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 1rem;
-    background-color: #f9f9f9;
-  }
-
-  /* Espacio entre bloques */
-  .matching-container.relacion-autor-teoria .autores,
-  .matching-container.relacion-teoria-palabra .autores {
-    margin-bottom: 1rem;
-  }
-}
 
 #reintentar-btn {
   margin-top: 1.5rem;

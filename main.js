@@ -1,5 +1,7 @@
+// --- JS COMPLETO CON EVALUACIÓN ---
+
 document.addEventListener("DOMContentLoaded", () => {
-  // --- LÓGICA DE OPCIÓN MÚLTIPLE ---
+  // --- OPCIÓN MÚLTIPLE ---
   const botones = document.querySelectorAll(".opcion");
   botones.forEach(boton => {
     boton.addEventListener("click", () => {
@@ -16,9 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- LÓGICA DE PRIMER EMPAREJAMIENTO (autores → teorías) ---
+  // --- AUTOR → TEORÍA ---
   const autores = document.querySelectorAll('.autor');
-  const teorias1 = document.querySelectorAll('.matching-container .teoria');
+  const teoriasAutor = document.querySelectorAll('.relacion-autor-teoria .teoria-autor');
   const respuestasAutorTeoria = {
     'Piaget': 'Constructivismo',
     'Skinner': 'Conductismo',
@@ -36,33 +38,30 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  teorias1.forEach(btnTeoria => {
+  teoriasAutor.forEach(btnTeoria => {
     btnTeoria.addEventListener('click', () => {
       if (!autorSeleccionado) return;
       const autor = autorSeleccionado.dataset.autor;
       const teoria = btnTeoria.dataset.teoria;
 
-      // Limpiar emparejamiento previo de ese autor
+      // Quitar clases previas si ya había emparejamiento
       if (emparejamientos1[autor]) {
         const prev = emparejamientos1[autor];
-        const btnPrev = Array.from(teorias1).find(t => t.dataset.teoria === prev);
+        const btnPrev = Array.from(teoriasAutor).find(t => t.dataset.teoria === prev);
         if (btnPrev) btnPrev.classList.remove('correcto', 'incorrecto');
-        if (autorSeleccionado.classList.contains('incorrecto')) {
-          autorSeleccionado.classList.remove('incorrecto');
-        }
+        autorSeleccionado.classList.remove('correcto', 'incorrecto');
       }
+
       emparejamientos1[autor] = teoria;
 
-      // Marcar correcto/incorrecto
       if (respuestasAutorTeoria[autor] === teoria) {
         autorSeleccionado.classList.add('correcto');
         autorSeleccionado.classList.remove('incorrecto');
         btnTeoria.classList.add('correcto');
         btnTeoria.classList.remove('incorrecto');
       } else {
-        if (!autorSeleccionado.classList.contains('correcto')) {
-          autorSeleccionado.classList.add('incorrecto');
-        }
+        autorSeleccionado.classList.add('incorrecto');
+        autorSeleccionado.classList.remove('correcto');
         btnTeoria.classList.add('incorrecto');
         btnTeoria.classList.remove('correcto');
       }
@@ -71,8 +70,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- LÓGICA DE SEGUNDO EMPAREJAMIENTO (teorías → palabras) ---
-  const teorias2 = document.querySelectorAll('.relacion-teoria-palabra .teoria');
+  // --- TEORÍA → PALABRA CLAVE ---
+  const teoriasPalabra = document.querySelectorAll('.relacion-teoria-palabra .teoria-palabra');
   const palabras = document.querySelectorAll('.relacion-teoria-palabra .palabra');
   const respuestasTeoriaPalabra = {
     'Cognitivismo': 'Procesos mentales',
@@ -83,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let teoriaSeleccionada = null;
   let emparejamientos2 = {};
 
-  teorias2.forEach(btnTeoria => {
+  teoriasPalabra.forEach(btnTeoria => {
     btnTeoria.addEventListener('click', () => {
       if (teoriaSeleccionada) teoriaSeleccionada.classList.remove('seleccionado');
       teoriaSeleccionada = btnTeoria;
@@ -97,27 +96,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const teoria = teoriaSeleccionada.dataset.teoria;
       const palabra = btnPalabra.dataset.palabra;
 
-      // Limpiar emparejamiento previo de esa teoría
       if (emparejamientos2[teoria]) {
         const prev = emparejamientos2[teoria];
         const btnPrev = Array.from(palabras).find(p => p.dataset.palabra === prev);
         if (btnPrev) btnPrev.classList.remove('correcto', 'incorrecto');
-        if (teoriaSeleccionada.classList.contains('incorrecto')) {
-          teoriaSeleccionada.classList.remove('incorrecto');
-        }
+        teoriaSeleccionada.classList.remove('correcto', 'incorrecto');
       }
+
       emparejamientos2[teoria] = palabra;
 
-      // Marcar correcto/incorrecto
       if (respuestasTeoriaPalabra[teoria] === palabra) {
         teoriaSeleccionada.classList.add('correcto');
         teoriaSeleccionada.classList.remove('incorrecto');
         btnPalabra.classList.add('correcto');
         btnPalabra.classList.remove('incorrecto');
       } else {
-        if (!teoriaSeleccionada.classList.contains('correcto')) {
-          teoriaSeleccionada.classList.add('incorrecto');
-        }
+        teoriaSeleccionada.classList.add('incorrecto');
+        teoriaSeleccionada.classList.remove('correcto');
         btnPalabra.classList.add('incorrecto');
         btnPalabra.classList.remove('correcto');
       }
@@ -126,45 +121,46 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // --- LÓGICA DE EVALUACIÓN FINAL ---
-  // --- LÓGICA DE EVALUACIÓN FINAL ---
-const evaluarBtn = document.getElementById('evaluar-btn');
-const resultadoEl = document.getElementById('resultado');
+  // --- EVALUACIÓN FINAL ---
+  const evaluarBtn = document.getElementById('evaluar-btn');
+  const resultadoEl = document.getElementById('resultado');
+  const reintentarBtn = document.getElementById('reintentar-btn');
 
-evaluarBtn.addEventListener('click', () => {
-  const aciertosOpciones = document.querySelectorAll('.opcion.correcta').length;
-  const aciertosEmp1    = document.querySelectorAll('.matching-container .autor.correcto').length;
-  const aciertosEmp2    = document.querySelectorAll('.relacion-teoria-palabra .teoria.correcto').length;
+  evaluarBtn.addEventListener('click', () => {
+    const aciertosOpciones = document.querySelectorAll('.opcion.correcta').length;
+    const aciertosEmp1 = document.querySelectorAll('.relacion-autor-teoria .autor.correcto').length;
+    const aciertosEmp2 = document.querySelectorAll('.relacion-teoria-palabra .teoria-palabra.correcto').length;
 
-  // Ajusta estos números si cambias el número de ítems
-  const totalOpciones  = 7;
-  const totalEmparej1  = Object.keys(respuestasAutorTeoria).length;
-  const totalEmparej2  = Object.keys(respuestasTeoriaPalabra).length;
-  const totalPosible   = totalOpciones + totalEmparej1 + totalEmparej2;
-  const totalAciertos  = aciertosOpciones + aciertosEmp1 + aciertosEmp2;
+    const totalOpciones = 7;
+    const totalEmparej1 = Object.keys(respuestasAutorTeoria).length;
+    const totalEmparej2 = Object.keys(respuestasTeoriaPalabra).length;
+    const totalPosible = totalOpciones + totalEmparej1 + totalEmparej2;
+    const totalAciertos = aciertosOpciones + aciertosEmp1 + aciertosEmp2;
 
-  // Mensaje según rango de aciertos
-  let mensaje;
-  if (totalAciertos <= 5) {
-    mensaje = 'Ánimo, ¡puedes mejorar!';
-  } else if (totalAciertos <= 10) {
-    mensaje = 'Hay talento, sólo falta apoyo, ¡sigue así!';
-  } else {
-    mensaje = '¡Excelente trabajo, pedagogo brillante!';
-  }
+    let mensaje;
+    if (totalAciertos <= 5) {
+      mensaje = 'Ánimo, ¡puedes mejorar!';
+    } else if (totalAciertos <= 10) {
+      mensaje = 'Hay talento, sólo falta apoyo, ¡sigue así!';
+    } else {
+      mensaje = '¡Excelente trabajo, pedagogo brillante!';
+    }
 
-  // Mostrar resultado y mensaje
-  resultadoEl.style.display = "block";
-  resultadoEl.innerHTML = `
-    <strong>Obtuviste ${totalAciertos} de 16 aciertos.</strong><br>
-    ${mensaje}
-  `;
-  document.getElementById('reintentar-btn').style.display = 'block';
-  document.getElementById('reintentar-btn').addEventListener('click', () => {
-  location.reload();
+    resultadoEl.style.display = "block";
+    resultadoEl.innerHTML = `
+      <strong>Obtuviste ${totalAciertos} de 16 aciertos.</strong><br>
+      ${mensaje}
+    `;
+
+    reintentarBtn.style.display = 'block';
+    // Aseguramos un único listener
+    reintentarBtn.replaceWith(reintentarBtn.cloneNode(true));
+    document.getElementById('reintentar-btn').addEventListener('click', () => {
+      location.reload();
+    });
+  });
 });
-});
-});
+
 
 
 
