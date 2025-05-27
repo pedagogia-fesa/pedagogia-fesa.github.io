@@ -154,6 +154,7 @@ evaluarBtn.addEventListener('click', () => {
   }
 
   // Mostrar resultado y mensaje
+  resultadoEl.style.display = "block";
   resultadoEl.innerHTML = `
     <strong>Obtuviste ${totalAciertos} de 16 aciertos.</strong><br>
     ${mensaje}
